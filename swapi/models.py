@@ -18,6 +18,29 @@ class BaseQuerySet(object):
     def __init__(self):
         self.items = []
 
+    def order_by(self, order_attribute):
+        ''' Return the list of items in a certain order '''
+        dict_values = {}
+        for item in self.items:
+            attribute = getattr(item, order_attribute)
+            try:
+                # Try make it into an integer if we can
+                attribute = int(attribute)
+            except:
+                pass
+            dict_values[item] = attribute
+        to_return = []
+        for f, v in sorted(
+                six.iteritems(dict_values), key=lambda (f, v): (v, f)):
+
+            to_return.append(f)
+
+        return to_return
+
+    def count(self):
+        ''' Get the number of items in this queryset'''
+        return len(self.items)
+
 
 class StarshipQuerySet(BaseQuerySet):
 
@@ -38,6 +61,12 @@ class Starship(BaseModel):
 
     def __repr__(self):
         return '<Starship - {0}>'.format(self.name)
+
+    def get_films(self):
+        return FilmQuerySet(self.films)
+
+    def get_pilots(self):
+        return PeopleQuerySet(self.pilots)
 
 
 class VehicleQuerySet(BaseQuerySet):
@@ -60,6 +89,12 @@ class Vehicle(BaseModel):
     def __repr__(self):
         return '<Vehicle - {0}>'.format(self.name)
 
+    def get_films(self):
+        return FilmQuerySet(self.films)
+
+    def get_pilots(self):
+        return PeopleQuerySet(self.pilots)
+
 
 class FilmQuerySet(BaseQuerySet):
 
@@ -70,7 +105,7 @@ class FilmQuerySet(BaseQuerySet):
             self.items.append(Film(response.content))
 
     def __repr__(self):
-        return '<StarshipQuerySet - {0}>'.format(str(len(self.items)))
+        return '<FilmQuerySet - {0}>'.format(str(len(self.items)))
 
 
 class Film(BaseModel):
@@ -85,7 +120,7 @@ class Film(BaseModel):
         return StarshipQuerySet(self.starships)
 
     def get_characters(self):
-        return PeopleQuerySet(self.people)
+        return PeopleQuerySet(self.characters)
 
     def get_vehicles(self):
         return VehicleQuerySet(self.vehicles)
@@ -96,16 +131,16 @@ class Film(BaseModel):
     def get_species(self):
         return SpeciesQuerySet(self.species)
 
-    def gen_crawl(self):
+    def gen_opening_crawl(self):
         ''' Return a generator yielding each line of the opening crawl'''
         for line in self.opening_crawl.split('\n'):
             yield line
 
     def print_crawl(self):
         ''' Print the opening crawl one line at a time '''
-        for line in self.gen_crawl():
+        for line in self.gen_opening_crawl():
             time.sleep(.5)
-            print line
+            print(line)
 
 
 class PlanetQuerySet(BaseQuerySet):
@@ -117,7 +152,7 @@ class PlanetQuerySet(BaseQuerySet):
             self.items.append(Planet(response.content))
 
     def __repr__(self):
-        return '<StarshipQuerySet - {0}>'.format(str(len(self.items)))
+        return '<PlanetQuerySet - {0}>'.format(str(len(self.items)))
 
 
 class Planet(BaseModel):
@@ -127,6 +162,12 @@ class Planet(BaseModel):
 
     def __repr__(self):
         return '<Planet - {0}>'.format(self.name)
+
+    def get_films(self):
+        return FilmQuerySet(self.films)
+
+    def get_residents(self):
+        return PeopleQuerySet(self.residents)
 
 
 class SpeciesQuerySet(BaseQuerySet):
@@ -138,7 +179,7 @@ class SpeciesQuerySet(BaseQuerySet):
             self.items.append(Species(response.content))
 
     def __repr__(self):
-        return '<StarshipQuerySet - {0}>'.format(str(len(self.items)))
+        return '<SpeciesQuerySet - {0}>'.format(str(len(self.items)))
 
 
 class Species(BaseModel):
@@ -148,6 +189,16 @@ class Species(BaseModel):
 
     def __repr__(self):
         return '<Species - {0}>'.format(self.name)
+
+    def get_films(self):
+        return FilmQuerySet(self.films)
+
+    def get_people(self):
+        return PeopleQuerySet(self.people)
+
+    def get_homeworld(self):
+        response = query(self.homeworld)
+        return Planet(response.content)
 
 
 class PeopleQuerySet(BaseQuerySet):

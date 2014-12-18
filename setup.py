@@ -12,15 +12,11 @@ readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 requirements = [
-    # TODO: put package requirements here
-]
-
-test_requirements = [
-    # TODO: put package test requirements here
+    'requests==2.5.0', 'six==1.8.0'
 ]
 
 setup(
-    name='swapi-python',
+    name='swapi',
     version='0.1.0',
     description='A Python helper library for swapi.co - the Star Wars API',
     long_description=readme + '\n\n' + history,
@@ -28,15 +24,15 @@ setup(
     author_email='paulandrewhallett@gmail.com',
     url='https://github.com/phalt/swapi-python',
     packages=[
-        'swapi-python',
+        'swapi',
     ],
-    package_dir={'swapi-python':
-                 'swapi-python'},
+    package_dir={'swapi':
+                 'swapi'},
     include_package_data=True,
     install_requires=requirements,
     license="BSD",
     zip_safe=False,
-    keywords='swapi-python',
+    keywords='swapi',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
@@ -50,5 +46,4 @@ setup(
         'Programming Language :: Python :: 3.4',
     ],
     test_suite='tests',
-    tests_require=test_requirements
 )

@@ -1,12 +1,18 @@
 import settings
-from utils import query
+from utils import query, all_resource_urls
 from models import (
     People,
+    PeopleQuerySet,
     Planet,
+    PlanetQuerySet,
     Starship,
+    StarshipQuerySet,
     Vehicle,
+    VehicleQuerySet,
     Species,
-    Film
+    SpeciesQuerySet,
+    Film,
+    FilmQuerySet,
 )
 
 
@@ -19,8 +25,23 @@ def _get(id, type):
     )
     return result
 
+
 def get_all(resource):
-    return ''
+    ''' Return all of a single resource '''
+    QUERYSETS = {
+        settings.PEOPLE: PeopleQuerySet,
+        settings.PLANETS: PlanetQuerySet,
+        settings.STARSHIPS: StarshipQuerySet,
+        settings.VEHICLES: VehicleQuerySet,
+        settings.SPECIES: SpeciesQuerySet,
+        settings.FILMS: FilmQuerySet
+    }
+
+    urls = all_resource_urls(
+        "{0}/{1}/".format(settings.BASE_URL, resource)
+    )
+
+    return QUERYSETS[resource](urls)
 
 
 def get_planet(planet_id):

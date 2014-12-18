@@ -32,24 +32,20 @@ clean-test:
 	rm -fr htmlcov/
 
 lint:
-	flake8 swapi-python tests
+	flake8 swapi tests
 
 test:
-	python setup.py test
-
-test-all:
-	tox
+	nosetests tests/test_swapi.py
 
 coverage:
-	coverage run --source swapi-python setup.py test
-	coverage report -m
+	nosetests tests/test_swapi.py --with-coverage --cover-package=swapi
 	coverage html
 	open htmlcov/index.html
 
 docs:
 	rm -f docs/swapi-python.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ swapi-python
+	sphinx-apidoc -o docs/ swapi
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	open docs/_build/html/index.html
