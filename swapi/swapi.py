@@ -78,6 +78,3 @@ def get_film(film_id):
     ''' Return a single film '''
     result = _get(film_id, settings.FILMS)
     return Film(result.content)
-
-
-
