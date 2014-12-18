@@ -1,5 +1,4 @@
 import settings
-import exceptions
 from utils import query
 from models import People
 
