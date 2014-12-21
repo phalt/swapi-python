@@ -4,7 +4,7 @@ __author__ = 'Paul Hallett'
 __email__ = 'paulandrewhallett@gmail.com'
 __version__ = '0.1.0'
 
-from swapi import (
+from swapi.swapi import (
     get_all,
     get_person,
     get_planet,
@@ -14,7 +14,7 @@ from swapi import (
     get_species
 )
 
-from settings import (
+from swapi.settings import (
     PEOPLE,
     PLANETS,
     STARSHIPS,
