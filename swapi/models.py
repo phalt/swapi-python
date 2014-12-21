@@ -41,6 +41,11 @@ class BaseQuerySet(object):
         ''' Get the number of items in this queryset'''
         return len(self.items)
 
+    def iter(self):
+        ''' A generator that returns each resource in self.items '''
+        for i in self.items:
+            yield i
+
 
 class StarshipQuerySet(BaseQuerySet):
 
@@ -218,8 +223,6 @@ class People(BaseModel):
 
     def __init__(self, raw_data):
         super(People, self).__init__(raw_data)
-        # patch this because it is buggy
-        self.species = self.species[0]
 
     def __repr__(self):
         return '<Person - {0}>'.format(self.name)
