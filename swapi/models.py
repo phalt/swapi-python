@@ -143,6 +143,13 @@ class Film(BaseModel):
 
     def print_crawl(self):
         ''' Print the opening crawl one line at a time '''
+        print("Star Wars")
+        time.sleep(.5)
+        print("Episode {0}".format(self.episode_id))
+        time.sleep(.5)
+        print("")
+        time.sleep(.5)
+        print("{0}".format(self.title))
         for line in self.gen_opening_crawl():
             time.sleep(.5)
             print(line)

@@ -16,9 +16,10 @@ help:
 clean: clean-build clean-pyc clean-test
 
 clean-build:
-	rm -fr build/
-	rm -fr dist/
-	rm -fr *.egg-info
+	rm -rf build/
+	rm -rf dist/
+	rm -rf *.egg-info
+	rm -rf htmlcov/
 
 clean-pyc:
 	find . -name '*.pyc' -exec rm -f {} +

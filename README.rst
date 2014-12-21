@@ -15,9 +15,94 @@ swapi-python
 A Python helper library for swapi.co - the Star Wars API
 
 * Free software: BSD license
-* Documentation: https://swapi-python.readthedocs.org.
+* Documentation: https://swapi.readthedocs.org.
 
-Features
---------
+============
+Installation
+============
 
-* TODO
+At the command line::
+
+    $ pip install swapi
+
+Basic Usage
+========
+
+To use swapi-python in a project::
+
+    import swapi
+
+All resources are accessible through the top-level ``get_resource()`` methods::
+
+    luke = swapi.get_person(1)
+    tatooine = swapi.get_planet(1)
+
+Methods
+=======
+
+These are the top-level methods you can use to get resources from swapi.co. To learn more about the models and objects that are returned, see the ``models`` page.
+
+get_person(id)
+------------
+
+Return a single ``Person`` resource.
+
+Example::
+
+    swapi.get_person(1)
+    >>> <Person - Luke Skywalker>
+
+
+get_planet(id)
+------------
+
+Return a single ``Planet`` resource.
+
+Example::
+
+    swapi.get_planet(1)
+    >>> <Planet - Tatooine>
+
+
+get_starship(id)
+------------
+
+Return a single ``Starship`` resource.
+
+Example::
+
+    swapi.get_starship(6)
+    >>> <Starship - Death Star>
+
+
+get_vehicle(id)
+------------
+
+Return a single ``Vehicle`` resource.
+
+Example::
+
+    swapi.get_vehicle(4)
+    >>> <Vehicle - Sand Crawler>
+
+
+get_film(id)
+------------
+
+Return a single ``Film`` resource.
+
+Example::
+
+    swapi.get_planet(1)
+    >>> <Planet - A New Hope>
+
+
+get_all("resource")
+------------
+
+Return a ``QuerySet`` containing all the items in a single resource. See the ```models``` page for more information on the models used in swapi-python.
+
+Example::
+
+    swapi.get_all("films")
+    >>> <FilmQuerySet - 6>
