@@ -248,5 +248,4 @@ class People(BaseModel):
         return Planet(response.content)
 
     def get_species(self):
-        response = query(self.species)
-        return Species(response.content)
+        return SpeciesQuerySet(self.species)

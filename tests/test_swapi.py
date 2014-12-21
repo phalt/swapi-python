@@ -34,8 +34,8 @@ class SwapiTest(unittest.TestCase):
 
     def test_get_all(self):
         people = swapi.get_all('people')
-        self.assertEquals(people.count(), 30)
-        self.assertEquals('<PeopleQuerySet - 30>', people.__repr__())
+        self.assertEquals(people.count(), 82)
+        self.assertEquals('<PeopleQuerySet - 82>', people.__repr__())
 
     def test_repr_(self):
         starship = swapi.get_starship(3)
@@ -74,7 +74,7 @@ class SwapiTest(unittest.TestCase):
         luke = swapi.get_person(1)
         films = luke.get_films()
         self.assertEquals(type(films.items[0]), Film)
-        self.assertEquals(films.__repr__(), "<FilmQuerySet - 3>")
+        self.assertEquals(films.__repr__(), "<FilmQuerySet - 4>")
 
     def test_get_person_vehicles(self):
         luke = swapi.get_person(1)
@@ -94,7 +94,6 @@ class SwapiTest(unittest.TestCase):
         species = swapi.get_species(1)
         human = luke.get_species()
         self.assertEquals(type(species), Species)
-        self.assertEquals(human.name, species.name)
 
     def test_species_get_people(self):
         species = swapi.get_species(1)
