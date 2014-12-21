@@ -14,4 +14,3 @@ pep8==1.5.7
 pyflakes==0.8.1
 requests==2.5.0
 six==1.8.0
-wsgiref==0.1.2
