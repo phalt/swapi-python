@@ -5,7 +5,7 @@ Settings and stuff.
 '''
 
 
-BASE_URL = 'http://swapi.co/api'
+BASE_URL = 'http://localhost:8000/api'
 
 PEOPLE = 'people'
 PLANETS = 'planets'

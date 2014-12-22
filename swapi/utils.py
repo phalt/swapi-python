@@ -1,6 +1,9 @@
 import requests
-import json
-import exceptions
+import ujson as json
+try:
+    from swapi import exceptions
+except:
+    import exceptions
 
 
 def query(query):

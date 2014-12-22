@@ -1,27 +1,44 @@
-import settings
-from utils import query, all_resource_urls
-from models import (
-    People,
-    PeopleQuerySet,
-    Planet,
-    PlanetQuerySet,
-    Starship,
-    StarshipQuerySet,
-    Vehicle,
-    VehicleQuerySet,
-    Species,
-    SpeciesQuerySet,
-    Film,
-    FilmQuerySet,
-)
-
+try:
+    from swapi import settings
+    from swapi.utils import query, all_resource_urls
+    from swapi.models import (
+        People,
+        PeopleQuerySet,
+        Planet,
+        PlanetQuerySet,
+        Starship,
+        StarshipQuerySet,
+        Vehicle,
+        VehicleQuerySet,
+        Species,
+        SpeciesQuerySet,
+        Film,
+        FilmQuerySet,
+    )
+except:
+    import settings
+    from utils import query, all_resource_urls
+    from models import (
+        People,
+        PeopleQuerySet,
+        Planet,
+        PlanetQuerySet,
+        Starship,
+        StarshipQuerySet,
+        Vehicle,
+        VehicleQuerySet,
+        Species,
+        SpeciesQuerySet,
+        Film,
+        FilmQuerySet,
+    )
 
 def _get(id, type):
     ''' Return a single person '''
     result = query("{0}/{1}/{2}/".format(
         settings.BASE_URL,
         type,
-        unicode(id))
+        str(id))
     )
     return result
 

@@ -1,8 +1,11 @@
-import json
+import ujson as json
 import time
 
 import six
-from utils import query
+try:
+    from swapi.utils import query
+except:
+    from utils import query
 
 
 class BaseModel(object):
@@ -20,21 +23,9 @@ class BaseQuerySet(object):
 
     def order_by(self, order_attribute):
         ''' Return the list of items in a certain order '''
-        dict_values = {}
-        for item in self.items:
-            attribute = getattr(item, order_attribute)
-            try:
-                # Try make it into an integer if we can
-                attribute = int(attribute)
-            except:
-                pass
-            dict_values[item] = attribute
         to_return = []
-        for f, v in sorted(
-                six.iteritems(dict_values), key=lambda (f, v): (v, f)):
-
+        for f in sorted(self.items, key=lambda i: getattr(i, order_attribute)):
             to_return.append(f)
-
         return to_return
 
     def count(self):
