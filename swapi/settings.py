@@ -4,8 +4,12 @@
 Settings and stuff.
 '''
 
-
-BASE_URL = 'http://swapi.co/api'
+import os
+DEBUG = bool(os.environ.get(('DEBUG'), False))
+if DEBUG:
+    BASE_URL = 'http://localhost:8000/api'
+else:
+    BASE_URL = 'http://swapi.co/api'
 
 PEOPLE = 'people'
 PLANETS = 'planets'
