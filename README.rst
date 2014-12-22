@@ -93,8 +93,8 @@ Return a single ``Film`` resource.
 
 Example::
 
-    swapi.get_planet(1)
-    >>> <Planet - A New Hope>
+    swapi.get_film(1)
+    >>> <Film - A New Hope>
 
 
 get_all("resource")
