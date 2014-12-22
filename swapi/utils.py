@@ -7,7 +7,8 @@ except:
 
 
 def query(query):
-    response = requests.get(query)
+    headers = {'User-Agent': 'swapi-python'}
+    response = requests.get(query, headers=headers)
     if response.status_code != 200:
         raise exceptions.ResourceDoesNotExist('Resource does not exist')
     return response
