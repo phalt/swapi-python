@@ -34,8 +34,8 @@ class SwapiTest(unittest.TestCase):
 
     def test_get_all(self):
         people = swapi.get_all('people')
-        self.assertEquals(people.count(), 82)
-        self.assertEquals('<PeopleQuerySet - 82>', people.__repr__())
+        self.assertEquals(people.count(), 87)
+        self.assertEquals('<PeopleQuerySet - 87>', people.__repr__())
 
     def test_repr_(self):
         starship = swapi.get_starship(3)
