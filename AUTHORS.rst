@@ -10,4 +10,4 @@ Development Lead
 Contributors
 ------------
 
-None yet. Why not be the first?
+Colm Harrington <colm.harrington@gmail.com>
