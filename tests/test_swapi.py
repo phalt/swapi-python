@@ -74,7 +74,7 @@ class SwapiTest(unittest.TestCase):
         luke = swapi.get_person(1)
         films = luke.get_films()
         self.assertEquals(type(films.items[0]), Film)
-        self.assertEquals(films.__repr__(), "<FilmQuerySet - 4>")
+        self.assertEquals(films.__repr__(), "<FilmQuerySet - 5>")
 
     def test_get_person_vehicles(self):
         luke = swapi.get_person(1)
