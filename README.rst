@@ -12,7 +12,9 @@ swapi-python
         :target: https://pypi.python.org/pypi/swapi
 
 
-A fork of a Python helper library for swapi.co - the Star Wars API
+A Python helper library for swapi.co - the Star Wars API
+
+NOTE: Tests will run against hosted API as opposed to data from github repo
 
 * Free software: BSD license
 * Documentation: https://swapi-python.readthedocs.org.
