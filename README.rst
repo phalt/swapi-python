@@ -14,6 +14,8 @@ swapi-python
 
 A Python helper library for swapi.co - the Star Wars API
 
+NOTE: Tests will run against hosted API as opposed to data from github repo
+
 * Free software: BSD license
 * Documentation: https://swapi-python.readthedocs.org.
 
