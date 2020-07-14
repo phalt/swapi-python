@@ -108,7 +108,7 @@ A novelty method that prints out each line of the opening crawl with a 0.5 secon
 Multiple Collection Model
 =========================
 
-When you query swapi.co for multiple resources of the same type, they will be returned as a ``ResourceQuerySet``, which is a collection of those resources that you requested. For example, to get the ``Starship`` resources linked to a person, you can do the following::
+When you query swapi.dev for multiple resources of the same type, they will be returned as a ``ResourceQuerySet``, which is a collection of those resources that you requested. For example, to get the ``Starship`` resources linked to a person, you can do the following::
 
     luke = swapi.get_person(1)
     starships = luke.get_starships()

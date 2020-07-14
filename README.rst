@@ -12,7 +12,7 @@ swapi-python
         :target: https://pypi.python.org/pypi/swapi
 
 
-A Python helper library for swapi.co - the Star Wars API
+A Python helper library for swapi.dev - the Star Wars API
 
 NOTE: Tests will run against hosted API as opposed to data from github repo
 
@@ -42,7 +42,7 @@ All resources are accessible through the top-level ``get_resource()`` methods::
 Methods
 =======
 
-These are the top-level methods you can use to get resources from swapi.co. To learn more about the models and objects that are returned, see the ``models`` page.
+These are the top-level methods you can use to get resources from swapi.dev. To learn more about the models and objects that are returned, see the ``models`` page.
 
 get_person(id)
 ------------
