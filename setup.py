@@ -11,14 +11,12 @@ except ImportError:
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
-requirements = [
-    'requests==2.5.0', 'six==1.8.0', 'ujson==1.33'
-]
+requirements = ['requests', 'six', 'ujson']
 
 setup(
     name='swapi',
-    version='0.1.3',
-    description='A Python helper library for swapi.co - the Star Wars API',
+    version='0.2.0',
+    description='A Python helper library for swapi.dev - the Star Wars API',
     long_description=readme + '\n\n' + history,
     author='Paul Hallett',
     author_email='paulandrewhallett@gmail.com',
