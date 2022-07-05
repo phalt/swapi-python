@@ -12,7 +12,7 @@ readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 requirements = [
-    'requests==2.5.0', 'six==1.8.0', 'ujson==1.33'
+    'requests==2.5.0', 'six==1.8.0', 'ujson==5.4.0'
 ]
 
 setup(
